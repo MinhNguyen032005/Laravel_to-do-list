@@ -4,7 +4,7 @@ services:
       context: ./laravel-app
       dockerfile: Dockerfile
     networks:
-        - docker-network
+      - docker-network
     ports:
       - 9000:9000
     depends_on:
@@ -41,9 +41,9 @@ services:
     volumes:
       - db-data:/bitnami/postgresql
     environment:
-      - POSTGRESQL_DATABASE=${POSTGRESQL_DATABASE}
-      - POSTGRESQL_USERNAME=${POSTGRESQL_USERNAME}
-      - POSTGRESQL_PASSWORD=${POSTGRESQL_PASSWORD}
+      - POSTGRESQL_DATABASE=postgres-database
+      - POSTGRESQL_USERNAME=postgres
+      - POSTGRESQL_PASSWORD=password
     networks:
       - docker-network
 
@@ -56,7 +56,7 @@ services:
       - redis-data:/bitnami/redis/data
     environment:
       - ALLOW_EMPTY_PASSWORD=no
-      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_PASSWORD=redis-password
       - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
     networks:
       - docker-network
